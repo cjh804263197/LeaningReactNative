@@ -10,47 +10,28 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TextInput
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-// 定义一个子组件测试Props属性
-class Greeting extends Component {
-  render () {
-    return (
-      <Text>Hello {this.props.name}!</Text>
-    )
-  }
-}
-// 定义一个子组件测试State状态
-class Blink extends Component {
+class PizzaTranslator extends Component {
   constructor (props) {
     super(props)
-    // 设置组件内部状态中的变量
-    this.state = {
-      showText: true
-    }
-
-    // 每1秒对showText状态做一次取反操作
-    setInterval(() => {
-      // 更新组件内部state状态中的变量
-      this.setState(previousState => {
-        return {
-          showText: !previousState.showText
-        }
-      })
-    }, 1000)
+    this.state = {text: ''}
   }
 
   render () {
-    let display = this.state.showText ? this.props.text : ''
     return (
-      <Text>{display}</Text>
+      <View style={{padding: 10}}>
+        <TextInput
+          style={{height: 40, width: 200}}
+          placeholder="请在这里输入文本"
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text style={{padding: 10, fontSize: 42}}>
+          {this.state.text.split(' ').map( (word) =>  word && '🍕' ).join(' ')}
+        </Text>
+      </View>
     )
   }
 }
@@ -58,22 +39,9 @@ class Blink extends Component {
 // type Props = {};
 export default class App extends Component {
   render() {
-    let pic = {
-      uri: 'https://facebook.github.io/react-native/img/header_logo.png'
-    }
     return (
       <View style={styles.container}>
-        <Image source={pic} style={{width: 240, height: 220}}/>
-        <View style={{alignItems: 'center'}}>
-          <Greeting name='React Native'/>
-          <Blink text='Hello React Native!'></Blink>
-        </View>
-        <Text style={styles.instructions}>
-          My First ReactNative Project
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <PizzaTranslator></PizzaTranslator>
       </View>
     );
   }
