@@ -11,27 +11,53 @@ import {
   Text,
   View,
   Image,
-  TextInput
+  TextInput,
+  ScrollView
 } from 'react-native';
 
-class PizzaTranslator extends Component {
+class TestScrollView extends Component {
   constructor (props) {
     super(props)
-    this.state = {text: ''}
+    this.state ={
+      imgs :[
+        {
+          uri: 'https://facebook.github.io/react-native/img/header_logo.png'
+        },
+        {
+          uri: 'https://facebook.github.io/react-native/img/header_logo.png'
+        },
+        {
+          uri: 'https://facebook.github.io/react-native/img/header_logo.png'
+        },
+        {
+          uri: 'https://facebook.github.io/react-native/img/header_logo.png'
+        }
+        // require('./img/header_logo.png'),
+        // require('./img/header_logo.png'),
+        // require('./img/header_logo.png'),
+        // require('./img/header_logo.png')
+      ]
+    }
   }
 
   render () {
-    return (
-      <View style={{padding: 10}}>
-        <TextInput
-          style={{height: 40, width: 200}}
-          placeholder="请在这里输入文本"
-          onChangeText={(text) => this.setState({text})}
-        />
-        <Text style={{padding: 10, fontSize: 42}}>
-          {this.state.text.split(' ').map( (word) =>  word && '🍕' ).join(' ')}
-        </Text>
+    const item1 = (
+      <View>
+        <Text style={{fontSize: 96}}>Item1</Text>
+        {this.state.imgs.map((pic, index) =>
+            <Image key={index} source={pic} style={{width: 100, height: 100}}/>
+          )}
       </View>
+    )
+    const item2 = this.state.imgs.map((pic, index) =>
+      <Image key={index} source={pic} style={{width: 100, height: 100}}/>
+    )
+    return (
+      <ScrollView>
+        {item1}
+        <Text style={{fontSize: 96}}>Item2</Text>
+        {item2}
+      </ScrollView>
     )
   }
 }
@@ -41,7 +67,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <PizzaTranslator></PizzaTranslator>
+        <TestScrollView></TestScrollView>
       </View>
     );
   }
