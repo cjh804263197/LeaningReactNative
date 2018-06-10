@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -18,17 +19,57 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+// 定义一个子组件测试Props属性
+class Greeting extends Component {
+  render () {
+    return (
+      <Text>Hello {this.props.name}!</Text>
+    )
+  }
+}
+// 定义一个子组件测试State状态
+class Blink extends Component {
+  constructor (props) {
+    super(props)
+    // 设置组件内部状态中的变量
+    this.state = {
+      showText: true
+    }
 
-type Props = {};
-export default class App extends Component<Props> {
+    // 每1秒对showText状态做一次取反操作
+    setInterval(() => {
+      // 更新组件内部state状态中的变量
+      this.setState(previousState => {
+        return {
+          showText: !previousState.showText
+        }
+      })
+    }, 1000)
+  }
+
+  render () {
+    let display = this.state.showText ? this.props.text : ''
+    return (
+      <Text>{display}</Text>
+    )
+  }
+}
+
+// type Props = {};
+export default class App extends Component {
   render() {
+    let pic = {
+      uri: 'https://facebook.github.io/react-native/img/header_logo.png'
+    }
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <Image source={pic} style={{width: 240, height: 220}}/>
+        <View style={{alignItems: 'center'}}>
+          <Greeting name='React Native'/>
+          <Blink text='Hello React Native!'></Blink>
+        </View>
         <Text style={styles.instructions}>
-          To get started, edit App.js
+          My First ReactNative Project
         </Text>
         <Text style={styles.instructions}>
           {instructions}
