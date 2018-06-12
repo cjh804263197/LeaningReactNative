@@ -56,7 +56,6 @@ export default class Login extends Component {
     if (this.state.username === '' || this.state.password === '') {
       alert('账号密码不能为空')
     } else {
-      console.warn(`username=${this.state.username} password=${this.md5(this.state.password)}`)
       ModalIndicator.show(`登录中...`)
       AV.User.logInWithMobilePhone(this.state.username, this.state.password).then(
         loginUser => {
