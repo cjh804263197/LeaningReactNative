@@ -61,7 +61,7 @@ export default class Login extends Component {
       AV.User.logInWithMobilePhone(this.state.username, this.state.password).then(
         loginUser => {
           ModalIndicator.hide()
-          this.onLoginSuccess()
+          this.props.navigation.navigate('Main')
         }
       ).catch(
         err => {
@@ -72,18 +72,6 @@ export default class Login extends Component {
       )
     }
   }
-
-  onLoginSuccess () {
-    const { navigator } = this.props
-    if (navigator) {
-      navigator.push({
-        name: 'Main',
-        component: Main
-      })
-    }
-  }
-
-
 }
 
 const styles = StyleSheet.create({

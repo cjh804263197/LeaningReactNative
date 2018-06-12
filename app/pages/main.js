@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {View, StyleSheet, Image} from 'react-native'
 import {Button, Input, Label} from 'teaset'
-import AV from 'leancloud-storage'
 
 export default class Main extends Component {
   constructor (props) {
@@ -15,6 +14,7 @@ export default class Main extends Component {
     return (
       <View style={styles.container}>
         <Label text={this.state.text}/>
+        <Button type='primary' size='md' title='跳转到Next' onPress={() => this.props.navigation.navigate('Next')}/>
       </View>
     )
   }
