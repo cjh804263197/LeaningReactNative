@@ -61,7 +61,7 @@ export default class Login extends Component {
       AV.User.logInWithMobilePhone(this.state.username, this.state.password).then(
         loginUser => {
           ModalIndicator.hide()
-          this.props.navigation.navigate('Main')
+          this.props.navigation.navigate('Main', {loginUser: loginUser.toJSON()})
         }
       ).catch(
         err => {

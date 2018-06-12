@@ -14,6 +14,7 @@ import { createStackNavigator } from 'react-navigation'
 import Login from './app/pages/login'
 import Main from './app/pages/main'
 import Next from './app/pages/next'
+import Coustom from './app/pages/coustom'
 
 export default class App extends Component {
   
@@ -23,11 +24,27 @@ export default class App extends Component {
     )
   }
 }
-
-const RootStack = createStackNavigator({
-  Login: Login,
+const MainStack = createStackNavigator({
   Main: Main,
-  Next: Next
-}, {
-  initialRouteName: 'Login'
+  Next: Next,
+  Coustom: Coustom
+  }, {
+    initialRouteName: 'Main',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#6495ED',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
 })
+const RootStack = createStackNavigator({
+    MainStack: MainStack,
+    Login: Login,
+  },{
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
