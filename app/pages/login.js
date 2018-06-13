@@ -3,7 +3,6 @@ import {View, StyleSheet, Image} from 'react-native'
 import {Button, Input, ModalIndicator} from 'teaset'
 import AV from 'leancloud-storage'
 import forge from 'node-forge'
-import Main from './main'
 
 
 export default class Login extends Component {
@@ -60,7 +59,7 @@ export default class Login extends Component {
       AV.User.logInWithMobilePhone(this.state.username, this.state.password).then(
         loginUser => {
           ModalIndicator.hide()
-          this.props.navigation.navigate('Main', {loginUser: loginUser.toJSON()})
+          this.props.navigation.navigate('MainDraw', {loginUser: loginUser.toJSON()})
         }
       ).catch(
         err => {

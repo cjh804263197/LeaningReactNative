@@ -3,15 +3,15 @@ import {View, StyleSheet, Image} from 'react-native'
 import {Button, Input, Label} from 'teaset'
 
 export default class Setting extends Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: navigation.state.routeName
-    }
-  }
+  // static navigationOptions = ({navigation}) => {
+  //   return {
+  //     title: navigation.state.routeName
+  //   }
+  // }
   constructor (props) {
     super(props)
     this.state = {
-      text: '我是设置组件'
+      text: '我是Live组件'
     }
   }
 
