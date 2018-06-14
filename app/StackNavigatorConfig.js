@@ -1,13 +1,20 @@
 
 const StackNavigationConfig = {
-    initialRouteName: 'Login',
+    initialRouteName: 'Login', // 设置默认的页面组件，必须是上面已注册的页面组件
     navigationOptions: {  // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)
-      headerStyle: {
-        backgroundColor: '#3CB371',
-      },
-      headerTintColor: '#fff',
+      // headerStyle: {
+      //   backgroundColor: '#3CB371',
+      // },
+      // headerTintColor: '#fff',
+      // headerTitleStyle: {
+      //   fontWeight: 'bold'
+      // }
       headerTitleStyle: {
-        fontWeight: 'bold'
+        color: 'white',
+        alignSelf: 'center' // 解决android手机导航栏标题不居中显示问题
+      },
+      headerStyle: {
+        backgroundColor: '#06C1AE' // 设置导航栏的背景色
       }
     },
     mode: 'card',  // 页面切换模式, 左右是card(相当于iOS中的push效果), 上下是modal(相当于iOS中的modal效果)

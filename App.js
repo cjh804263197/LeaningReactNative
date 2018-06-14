@@ -11,11 +11,12 @@ import {
   View
 } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
-// import Ionicons from 'react-native-vector-icons/Ionicons'
-import RouteConfig from './app/RouteConfig'
+// 导入自定义的RouteConfigs
+import RouteConfigs from './app/RouteConfig'
+// 导入自定义的StackNavigatorConfig
 import StackNavigatorConfig from './app/StackNavigatorConfig'
 
-const Navigator = createStackNavigator(RouteConfig, StackNavigatorConfig)
+const Navigator = createStackNavigator(RouteConfigs, StackNavigatorConfig)
 
 export default class App extends Component {
   

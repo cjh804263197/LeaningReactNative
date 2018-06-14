@@ -11,7 +11,7 @@ export default class Setting extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      text: '我是Home组件'
+      text: '我是Home组件,下面是Mobx的练习例子'
     }
   }
 
@@ -19,8 +19,17 @@ export default class Setting extends Component {
     return (
       <View style={styles.container}>
         <Label text={this.state.text}/>
+        <Button type='primary' size='md' title='Push到Mobx例子' onPress={this.gotoMobxDemo.bind(this)}/>
+        <Button type='primary' size='md' title='Push到CartMobx例子' onPress={this.gotoCartMobxDemo.bind(this)}/>
       </View>
     )
+  }
+
+  gotoMobxDemo () {
+    this.props.navigation.push('MobxDemo1')
+  }
+  gotoCartMobxDemo () {
+    this.props.navigation.push('CartMobxDemo')
   }
 }
 

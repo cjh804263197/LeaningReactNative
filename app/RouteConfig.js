@@ -2,7 +2,8 @@ import MainDraw from './DrawerNavigator'
 import Login from './pages/Login'
 import About from './pages/About'
 import Help from './pages/Help'
-
+import MobxDemo1 from './pages/MobxDemo1'
+import CartMobxDemo from './pages/CartMobxDemo'
 /*
     --- 路由配置 ---
 
@@ -23,7 +24,9 @@ const RouteConfig = {
     screen: About, // 必要的参数,其余都是按需添加
     path: 'app/About', // 使用url导航时用到, 如 web app 和 Deep Linking
   },
-  Help: Help // 简写，screen可以省略
+  Help: Help, // 简写，screen可以省略
+  MobxDemo1: MobxDemo1,
+  CartMobxDemo : CartMobxDemo
 }
 
 export default RouteConfig
