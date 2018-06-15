@@ -3,6 +3,7 @@ import {View, StyleSheet, Image} from 'react-native'
 import {Button, Input, ModalIndicator} from 'teaset'
 import AV from 'leancloud-storage'
 import forge from 'node-forge'
+import JPushModule from 'jpush-react-native'
 
 
 export default class Login extends Component {
@@ -59,6 +60,22 @@ export default class Login extends Component {
       AV.User.logInWithMobilePhone(this.state.username, this.state.password).then(
         loginUser => {
           ModalIndicator.hide()
+          // 设置Alias
+          JPushModule.setAlias(loginUser.toJSON().mobilePhoneNumber, (success, error) => {
+            if (error) {
+              console.warn('Alias设置失败')
+            } else {
+              console.warn('Alias设置成功')
+            }
+          })
+          // 设置Tags
+          JPushModule.setTags(['私塾世纪教育'], (success, error) => {
+            if (error) {
+              console.warn('Tags设置失败')
+            } else {
+              console.warn('Tags设置成功')
+            }
+          })
           this.props.navigation.navigate('MainDraw', {loginUser: loginUser.toJSON()})
         }
       ).catch(

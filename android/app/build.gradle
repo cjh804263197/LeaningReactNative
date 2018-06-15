@@ -106,6 +106,10 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [
+            JPUSH_APPKEY: "12e9040147b4d95a62bf5a5a", //在此替换你的APPKey
+            APP_CHANNEL: "developer-default"    //应用渠道号
+        ]
     }
     splits {
         abi {
@@ -139,6 +143,8 @@ android {
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
+    compile project(':jpush-react-native')  // 添加 jpush 依赖
+    compile project(':jcore-react-native')  // 添加 jcore 依赖
     compile "com.facebook.react:react-native:+"  // From node_modules
 }
 

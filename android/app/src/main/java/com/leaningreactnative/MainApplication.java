@@ -11,7 +11,14 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
+import cn.jpush.reactnativejpush.JPushPackage;
+
 public class MainApplication extends Application implements ReactApplication {
+
+  // 设置为 true 将不弹出 toast
+  private boolean SHUTDOWN_TOAST = false;
+  // 设置为 true 将不打印 log
+  private boolean SHUTDOWN_LOG = false;
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -22,7 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+              new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)
       );
     }
 

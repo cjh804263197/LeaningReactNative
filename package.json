@@ -10,6 +10,8 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "jcore-react-native": "^1.2.6",
+    "jpush-react-native": "^2.2.5",
     "leancloud-storage": "^3.7.2",
     "mobx": "^5.0.2",
     "mobx-react": "^5.2.3",
